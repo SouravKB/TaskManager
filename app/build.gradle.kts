@@ -54,6 +54,10 @@ android {
 dependencies {
 
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
+    implementation("com.google.android.gms:play-services-auth:20.2.0")
+
+    // Source: https://github.com/Kotlin/kotlinx.coroutines/tree/master/integration/kotlinx-coroutines-play-services
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.4.1")
 
     val coreVersion = "1.8.0"
     implementation("androidx.core:core-ktx:$coreVersion")
@@ -71,6 +75,9 @@ dependencies {
 
     val navVersion = "2.4.2"
     implementation("androidx.navigation:navigation-compose:$navVersion")
+
+    val livedataVersion = "2.4.1"
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$livedataVersion")
 
     // use BoM to automatically manage the versions of individual dependencies
     val firebaseBomVersion = "29.3.1"
