@@ -63,10 +63,13 @@ dependencies {
     val appcompatVersion = "1.4.2"
     implementation("androidx.appcompat:appcompat:$appcompatVersion")
 
+    val activityVersion = "1.4.0"
+    implementation("androidx.activity:activity-compose:$activityVersion")
+
     val composeVersion = "1.1.1"
-    implementation ("androidx.compose.material:material:$composeVersion")
-    implementation ("androidx.compose.animation:animation:$composeVersion")
-    implementation ("androidx.compose.ui:ui-tooling:$composeVersion")
+    implementation("androidx.compose.material:material:$composeVersion")
+    implementation("androidx.compose.animation:animation:$composeVersion")
+    implementation("androidx.compose.ui:ui-tooling:$composeVersion")
 
     val navVersion = "2.4.2"
     implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
