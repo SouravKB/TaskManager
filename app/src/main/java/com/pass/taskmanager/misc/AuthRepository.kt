@@ -1,16 +1,12 @@
 package com.pass.taskmanager.misc
 
-import android.util.Log
-import androidx.compose.runtime.ExperimentalComposeApi
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.identity.SignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
-import com.pass.taskmanager.models.Response
-import com.pass.taskmanager.models.Response.*
-import kotlinx.coroutines.ExperimentalCoroutinesApi
+import com.pass.taskmanager.utils.Response.*
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.flow
@@ -24,19 +20,15 @@ class AuthRepository(
     private var signInClient: GoogleSignInClient,
     private val usersRef: CollectionReference,
 ) {
-    private val TAG = "AuthRepository"
 
     fun isUserAuthenticatedInFirebase() = auth.currentUser != null
 
     suspend fun oneTapSignInWithGoogle() = flow {
         try {
             emit(Loading)
-            Log.d(TAG, "oneTapSignInWithGoogle: ")
             val result = oneTapClient.beginSignIn(signInRequest).await()
-            Log.d(TAG, "oneTapSignInWithGoogle: end")
             emit(Success(result))
         } catch (e: Exception) {
-            Log.d(TAG, "oneTapSignInWithGoogle: catch ${e.message}")
             emit(Failure(e))
         }
     }

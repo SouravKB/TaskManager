@@ -2,7 +2,6 @@ package com.pass.taskmanager.views
 
 import android.app.Activity.RESULT_OK
 import android.content.Context
-import android.util.Log
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
@@ -18,7 +17,6 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.BottomCenter
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
@@ -34,15 +32,13 @@ import com.google.firebase.auth.GoogleAuthProvider.getCredential
 import com.google.firebase.firestore.FirebaseFirestore
 import com.pass.taskmanager.R
 import com.pass.taskmanager.misc.AuthRepository
-import com.pass.taskmanager.models.Response.*
+import com.pass.taskmanager.utils.Response.*
 import com.pass.taskmanager.viewmodels.AuthViewModel
 
-private const val TAG = "AuthScreen"
-
 @Composable
-fun AuthScreen(
-    viewModel: AuthViewModel = hiltViewModel(LocalContext.current),
-    navigateToProfileScreen: () -> Unit
+fun AuthPage(
+    viewModel: AuthViewModel,
+    navigateToNextPage: () -> Unit
 ) {
     Scaffold(
         topBar = {
@@ -57,7 +53,6 @@ fun AuthScreen(
         rememberLauncherForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) { result ->
             if (result.resultCode == RESULT_OK) {
                 try {
-                    Log.d(TAG, "AuthScreen: result")
                     val credentials =
                         viewModel.oneTapClient.getSignInCredentialFromIntent(result.data)
                     val googleIdToken = credentials.googleIdToken
@@ -120,7 +115,7 @@ fun AuthScreen(
                         viewModel.createUser()
                     }
                 } else {
-                    navigateToProfileScreen()
+                    navigateToNextPage()
                 }
             }
         }
@@ -136,7 +131,7 @@ fun AuthScreen(
         is Success -> {
             createUserResponse.data?.let { isUserCreated ->
                 if (isUserCreated) {
-                    navigateToProfileScreen()
+                    navigateToNextPage()
                 }
             }
         }
@@ -181,8 +176,7 @@ fun AuthContent(
         contentAlignment = BottomCenter
     ) {
         SignInButton {
-            Log.d(TAG, "AuthContent: ")
-            viewModel.oneTapSignUp()
+            viewModel.oneTapSignIn()
         }
     }
 }

@@ -21,9 +21,10 @@ import com.pass.taskmanager.R
 import com.pass.taskmanager.models.Task
 import com.pass.taskmanager.views.TaskItem
 
-@Preview
 @Composable
-fun ProjectPage() {
+fun ProjectPage(
+    navigateToAuthPage: () -> Unit
+) {
     var showMenu by remember { mutableStateOf(false) }
     Scaffold(
         topBar = {
@@ -59,7 +60,7 @@ fun ProjectPage() {
         ) {
             Box(contentAlignment = Alignment.BottomStart) {
                 Image(
-                    painter = painterResource(id = R.drawable.project_background),
+                    painter = painterResource(id = R.drawable.ic_launcher_foreground),
                     contentDescription = "",
                     modifier = Modifier.fillMaxWidth(),
                 )
