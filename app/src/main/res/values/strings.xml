@@ -1,3 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 	<string name="app_name">TaskManager</string>
+	<string name="web_client_id" tools:ignore="TypographyDashes">795478695697-13chh8lnk2f0oujsvvtt9561d04keh9a.apps.googleusercontent.com</string>
 </resources>
