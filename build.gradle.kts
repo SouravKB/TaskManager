@@ -16,9 +16,6 @@ buildscript {
         val kotlinVersion = "1.7.0"
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
 
-        val navVersion = "2.4.2"
-        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:$navVersion")
-
         val googleServicesVersion = "4.3.10"
         classpath("com.google.gms:google-services:$googleServicesVersion")
 

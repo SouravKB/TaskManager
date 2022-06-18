@@ -3,8 +3,6 @@ plugins {
 
     id("org.jetbrains.kotlin.android")
 
-    id("androidx.navigation.safeargs.kotlin")
-
     id("com.google.gms.google-services")
 
     id("com.google.firebase.crashlytics")
@@ -72,8 +70,7 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling:$composeVersion")
 
     val navVersion = "2.4.2"
-    implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
-    implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
+    implementation("androidx.navigation:navigation-compose:$navVersion")
 
     // use BoM to automatically manage the versions of individual dependencies
     val firebaseBomVersion = "29.3.1"
