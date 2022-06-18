@@ -89,6 +89,9 @@ dependencies {
     implementation("com.google.firebase:firebase-messaging-ktx")
     implementation("com.google.firebase:firebase-crashlytics-ktx")
 
+    val coilVersion = "2.1.0"
+    implementation("io.coil-kt:coil-compose:$coilVersion")
+
     val materialVersion = "1.6.1"
     implementation("com.google.android.material:material:$materialVersion")
 
