@@ -7,7 +7,7 @@ import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import com.pass.taskmanager.models.Person
 import com.pass.taskmanager.models.Project
-import com.pass.taskmanager.models.Response
+import com.pass.taskmanager.utils.Response
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.channels.awaitClose
