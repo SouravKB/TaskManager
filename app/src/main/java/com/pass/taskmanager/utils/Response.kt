@@ -1,4 +1,4 @@
-package com.pass.taskmanager.models
+package com.pass.taskmanager.utils
 
 sealed class Response<out T> {
     object Loading: Response<Nothing>()

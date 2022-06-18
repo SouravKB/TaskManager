@@ -57,7 +57,7 @@ dependencies {
     implementation("com.google.android.gms:play-services-auth:20.2.0")
 
     // Source: https://github.com/Kotlin/kotlinx.coroutines/tree/master/integration/kotlinx-coroutines-play-services
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.4.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.6.1")
 
     val coreVersion = "1.8.0"
     implementation("androidx.core:core-ktx:$coreVersion")
@@ -91,6 +91,9 @@ dependencies {
 
     val coilVersion = "2.1.0"
     implementation("io.coil-kt:coil-compose:$coilVersion")
+
+    val accompanistVersion = "0.23.1"
+    implementation("com.google.accompanist:accompanist-navigation-animation:$accompanistVersion")
 
     val materialVersion = "1.6.1"
     implementation("com.google.android.material:material:$materialVersion")

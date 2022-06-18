@@ -1,27 +1,26 @@
 package com.pass.taskmanager.viewmodels
 
-import android.util.Log
+import android.content.Context
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import com.google.android.gms.auth.api.identity.BeginSignInResult
 import com.google.android.gms.auth.api.identity.SignInClient
 import com.google.firebase.auth.AuthCredential
 import com.pass.taskmanager.misc.AuthRepository
-import com.pass.taskmanager.models.Response
-import com.pass.taskmanager.models.Response.*
+import com.pass.taskmanager.utils.Response
+import com.pass.taskmanager.utils.Response.Success
+import com.pass.taskmanager.views.hiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.flow.collect
 
 class AuthViewModel(
     private val repo: AuthRepository,
     val oneTapClient: SignInClient
 ) : ViewModel() {
-
-    private val TAG = "AuthViewModel"
 
     val isUserAuthenticated get() = repo.isUserAuthenticatedInFirebase()
 
@@ -47,7 +46,6 @@ class AuthViewModel(
 
     fun oneTapSignIn() {
         viewModelScope.launch {
-            Log.d(TAG, "oneTapSignIn: ")
             repo.oneTapSignInWithGoogle().collect { response ->
                 _oneTapSignInState.value = response
             }
@@ -75,6 +73,16 @@ class AuthViewModel(
             repo.createUserInFirestore().collect { response ->
                 _createUserState.value = response
             }
+        }
+    }
+
+    class AuthVMFactory(
+        private val context: Context
+    ) : ViewModelProvider.Factory {
+
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+            @Suppress("UNCHECKED_CAST")
+            return hiltViewModel(context) as T
         }
     }
 }

@@ -20,11 +20,11 @@ import androidx.compose.ui.unit.sp
 import com.pass.taskmanager.R
 import com.pass.taskmanager.models.Task
 import com.pass.taskmanager.views.TaskItem
-import java.util.*
 
-@Preview
 @Composable
-fun ProjectPage() {
+fun ProjectPage(
+    navigateToAuthPage: () -> Unit
+) {
     var showMenu by remember { mutableStateOf(false) }
     Scaffold(
         topBar = {
@@ -60,7 +60,7 @@ fun ProjectPage() {
         ) {
             Box(contentAlignment = Alignment.BottomStart) {
                 Image(
-                    painter = painterResource(id = R.drawable.ic_launcher_background),
+                    painter = painterResource(id = R.drawable.ic_launcher_foreground),
                     contentDescription = "",
                     modifier = Modifier.fillMaxWidth(),
                 )
@@ -72,7 +72,7 @@ fun ProjectPage() {
                 contentPadding = PaddingValues(2.dp),
                 content = {
                     items(10) {
-                        TaskItem(Task("123","Description", "Status", listOf(), Date()))
+                        TaskItem(Task("Description", "Status", listOf()))
                     }
                 })
         }
