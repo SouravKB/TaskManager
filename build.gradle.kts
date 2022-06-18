@@ -13,7 +13,7 @@ buildscript {
         val agpVersion = "7.2.1"
         classpath("com.android.tools.build:gradle:$agpVersion")
 
-        val kotlinVersion = "1.7.0"
+        val kotlinVersion = "1.5.31"
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
 
         val googleServicesVersion = "4.3.10"
