@@ -39,7 +39,9 @@ object ProjectRepository {
         val listener = baseRef.document(projectID).addSnapshotListener { value, error ->
             trySend(Response.Success(value!!.get("taskIDs") as List<String>))
         }
-
+        awaitClose {
+            listener.remove()
+        }
     }
 
 

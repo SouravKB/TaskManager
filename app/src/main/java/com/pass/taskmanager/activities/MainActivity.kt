@@ -8,15 +8,17 @@ import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.navigation.NavHostController
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import com.pass.taskmanager.navigation.AppNavGraph
-import com.pass.taskmanager.navigation.projectsRoute
+import com.pass.taskmanager.navigation.projectListRoute
 import com.pass.taskmanager.viewmodels.AuthViewModel
+import com.pass.taskmanager.viewmodels.ProjectViewModel
 
 class MainActivity : ComponentActivity() {
 
     private lateinit var navController: NavHostController
-    private val viewModel by viewModels<AuthViewModel>() {
+    private val viewModel by viewModels<AuthViewModel> {
         AuthViewModel.AuthVMFactory(this)
     }
+    private val projectVm by viewModels<ProjectViewModel>()
 
     @OptIn(ExperimentalAnimationApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,7 +26,7 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             navController = rememberAnimatedNavController()
-            AppNavGraph(navController = navController, viewModel)
+            AppNavGraph(navController, viewModel, projectVm)
             checkAuthStatus()
             getAuthState()
         }
@@ -32,7 +34,7 @@ class MainActivity : ComponentActivity() {
 
     private fun checkAuthStatus() {
         if (viewModel.isUserAuthenticated) {
-            navController.navigate(projectsRoute)
+            navController.navigate(projectListRoute)
         }
     }
 

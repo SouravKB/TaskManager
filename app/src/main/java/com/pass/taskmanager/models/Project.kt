@@ -8,7 +8,9 @@ data class Project(
     @get: Exclude var pid: String,
     var name: String,
     var description: String,
-    var image: Uri,
+    var image: String,
     var adminUID: String,
     var members: List<String>,
-)
+) {
+    constructor() : this("", "", "", "", "", listOf())
+}

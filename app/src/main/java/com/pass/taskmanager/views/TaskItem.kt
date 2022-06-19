@@ -15,12 +15,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.pass.taskmanager.models.Task
 
-@Preview
-@Composable
-fun PreviewTaskItem() {
-    TaskItem(Task("", "", listOf()))
-}
-
 @Composable
 fun TaskItem(
     task: Task
@@ -36,7 +30,7 @@ fun TaskItem(
                 .background(Color.White)
         )
         {
-            Text(task.name)
+            Text(task.description)
             Text(task.status)
         }
     }

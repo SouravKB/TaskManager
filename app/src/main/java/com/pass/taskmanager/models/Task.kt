@@ -9,4 +9,6 @@ data class Task(
     var status: String,
     var members: List<Person>,
     var deadline: Date,
-)
+) {
+    constructor() : this("", "", "", listOf(), Date())
+}

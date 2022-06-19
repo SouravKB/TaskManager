@@ -14,12 +14,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.pass.taskmanager.R
 import com.pass.taskmanager.models.Task
+import com.pass.taskmanager.viewmodels.ProjectViewModel
 import com.pass.taskmanager.views.TaskItem
+import java.util.*
 
 @Composable
 fun ProjectPage(
@@ -72,7 +73,7 @@ fun ProjectPage(
                 contentPadding = PaddingValues(2.dp),
                 content = {
                     items(10) {
-                        TaskItem(Task("Description", "Status", listOf()))
+                        TaskItem(Task("", "Description", "Status", listOf(), Date()))
                     }
                 })
         }

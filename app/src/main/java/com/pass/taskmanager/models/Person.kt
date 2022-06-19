@@ -7,7 +7,9 @@ import com.google.firebase.firestore.Exclude
 data class Person(
     var name: String,
     var email: String,
-    var avatar: Uri,
+    var avatar: String,
     var phone_no: String,
     @get:Exclude var uid: String,
-)
+) {
+    constructor() : this("", "", "", "", "")
+}

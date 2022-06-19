@@ -1,11 +1,13 @@
 package com.pass.taskmanager.misc
 
+import android.net.Uri
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.identity.SignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
+import com.pass.taskmanager.models.Person
 import com.pass.taskmanager.utils.Response.*
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.callbackFlow
@@ -57,15 +59,14 @@ class AuthRepository(
     suspend fun createUserInFirestore() = flow {
         try {
             emit(Loading)
-//            auth.currentUser?.apply {
-//                usersRef.document(uid).set(mapOf(
-//                    DISPLAY_NAME to displayName,
-//                    EMAIL to email,
-//                    PHOTO_URL to photoUrl?.toString(),
-//                    CREATED_AT to serverTimestamp()
-//                )).await()
-//                emit(Success(true))
-//            }
+            auth.currentUser?.apply {
+                usersRef.document(uid).set(
+                    Person(
+                        displayName ?: "", email!!, photoUrl?.toString() ?: "", "", uid
+                    )
+                ).await()
+                emit(Success(true))
+            }
         } catch (e: Exception) {
             emit(Failure(e))
         }

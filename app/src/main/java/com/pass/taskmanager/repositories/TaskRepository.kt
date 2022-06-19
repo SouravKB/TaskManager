@@ -5,7 +5,7 @@ import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
-import com.pass.taskmanager.models.Response
+import com.pass.taskmanager.utils.Response
 import com.pass.taskmanager.models.Task
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.awaitAll
@@ -38,7 +38,9 @@ object TaskRepository {
         val listener = baseRef.document(taskID).addSnapshotListener { value, error ->
             trySend(Response.Success(value!!.get("userIDs") as List<String>))
         }
-
+        awaitClose {
+            listener.remove()
+        }
     }
 
 
