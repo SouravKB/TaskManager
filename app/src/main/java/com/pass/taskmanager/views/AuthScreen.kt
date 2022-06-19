@@ -176,7 +176,7 @@ fun AuthContent(
         contentAlignment = BottomCenter
     ) {
         SignInButton {
-            viewModel.oneTapSignIn()
+            viewModel.oneTapSignUp()
         }
     }
 }

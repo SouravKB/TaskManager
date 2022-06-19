@@ -5,10 +5,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Call
-import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.MoreVert
-import androidx.compose.material.icons.filled.Refresh
+import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -53,13 +50,15 @@ fun ProjectPage(
             )
         },
         floatingActionButton = {
-            FloatingActionButton(onClick = {}) {}
+            FloatingActionButton(onClick = {}) {
+                Icon(Icons.Filled.Add,"" )
+            }
         }) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
         ) {
-            Box(contentAlignment = Alignment.BottomStart) {
+            Box(contentAlignment = Alignment.BottomStart, modifier = Modifier.padding(10.dp)) {
                 Image(
                     painter = painterResource(id = R.drawable.ic_launcher_foreground),
                     contentDescription = "",

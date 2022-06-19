@@ -20,14 +20,15 @@ fun TaskItem(
     task: Task
 ) {
     Card(
-        elevation = 2.dp,
-        modifier = Modifier.padding(4.dp)
+        elevation = 5.dp,
+        modifier = Modifier.padding(start = 15.dp, end = 15.dp, bottom = 10.dp)
     ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .clip(RoundedCornerShape(4.dp))
+                .clip(RoundedCornerShape(10.dp))
                 .background(Color.White)
+                .padding(10.dp)
         )
         {
             Text(task.description)
